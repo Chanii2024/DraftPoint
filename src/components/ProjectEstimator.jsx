@@ -318,18 +318,18 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                 </div>
 
                                 <div className="space-y-4 text-left border-t border-white/10 pt-10">
-                                    <p className="text-indigo-200/90 text-sm font-bold flex items-center gap-4">
+                                    <div className="text-indigo-200/90 text-sm font-bold flex items-center gap-4">
                                         <div className="p-1 px-2 bg-indigo-500/20 rounded-lg text-[10px]">INCL</div>
                                         Scalable Next.js/React Architecture
-                                    </p>
-                                    <p className="text-indigo-200/90 text-sm font-bold flex items-center gap-4">
+                                    </div>
+                                    <div className="text-indigo-200/90 text-sm font-bold flex items-center gap-4">
                                         <div className="p-1 px-2 bg-indigo-500/20 rounded-lg text-[10px]">INCL</div>
                                         Advanced SEO & Global CDN Setup
-                                    </p>
-                                    <p className="text-indigo-200/90 text-sm font-bold flex items-center gap-4">
+                                    </div>
+                                    <div className="text-indigo-200/90 text-sm font-bold flex items-center gap-4">
                                         <div className="p-1 px-2 bg-indigo-500/20 rounded-lg text-[10px]">INCL</div>
                                         30 Days Priority Support & Training
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                             <p className="text-center text-slate-600 text-[10px] mt-6 font-medium uppercase tracking-widest">
