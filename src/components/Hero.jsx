@@ -34,24 +34,6 @@ const AvailabilityBadge = () => (
     </motion.div>
 );
 
-const ProfileImage = () => (
-    <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="mb-8"
-    >
-        <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-slate-500 to-slate-800 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <img
-                src="/profile.png"
-                alt="Profile"
-                className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover border border-white/10"
-            />
-        </div>
-    </motion.div>
-);
-
 
 
 
@@ -64,7 +46,6 @@ export default function Hero() {
             {/* FloatingTechStack removed */}
 
             <div className="relative z-10 space-y-1 max-w-7xl mx-auto w-full px-6">
-                <ProfileImage />
                 <AvailabilityBadge />
 
                 <motion.h2
