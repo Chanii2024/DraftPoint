@@ -36,7 +36,7 @@ export default function ContactModal({ isOpen, onClose, onConfirm, isSending }) 
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="fixed z-50 w-full max-w-md bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        className="fixed z-50 w-full max-w-md max-h-[90vh] overflow-y-auto bg-slate-900 border border-white/10 rounded-2xl shadow-2xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                     >
                         <div className="p-6 relative">
                             <button

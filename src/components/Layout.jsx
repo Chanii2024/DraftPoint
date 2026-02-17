@@ -5,7 +5,7 @@ export default function Layout({ children }) {
     return (
         <div className="relative min-h-screen">
             <Sidebar />
-            <main className="px-6 py-12 pb-32 md:pb-12 md:pl-32 md:pr-12 min-h-screen w-full max-w-7xl mx-auto">
+            <main className="md:pl-32 min-h-screen w-full overflow-x-hidden">
                 {children}
             </main>
         </div>

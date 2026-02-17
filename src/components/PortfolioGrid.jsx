@@ -84,28 +84,30 @@ const ProjectCard = ({ project }) => (
 export default function PortfolioGrid() {
     return (
         <section id="portfolio" className="py-12">
-            <motion.h2
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-white mb-10 flex items-center gap-3"
-            >
-                <span className="w-8 h-1 bg-indigo-500 rounded-full"></span>
-                Recent Work
-            </motion.h2>
+            <div className="max-w-7xl mx-auto px-6">
+                <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-3xl font-bold text-white mb-10 flex items-center gap-3"
+                >
+                    <span className="w-8 h-1 bg-indigo-500 rounded-full"></span>
+                    Recent Work
+                </motion.h2>
 
-            <motion.div
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-100px" }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6"
-            >
-                {projects.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
-                ))}
-            </motion.div>
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6"
+                >
+                    {projects.map((project, index) => (
+                        <ProjectCard key={index} project={project} />
+                    ))}
+                </motion.div>
+            </div>
         </section>
     );
 }

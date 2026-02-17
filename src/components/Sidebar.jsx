@@ -1,14 +1,16 @@
 import React from 'react';
-import { Home, Briefcase, Users, Mail } from 'lucide-react';
+import { Home, Briefcase, Layers, Calculator, MessageSquare, User } from 'lucide-react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
 export default function Sidebar() {
     const navItems = [
-        { icon: Home, label: 'Home', href: '#' }, // href='#' for top of page
-        { icon: Briefcase, label: 'Portfolio', href: '#portfolio' },
-        { icon: Users, label: 'Collaborate', href: '#collaborate' },
-        { icon: Mail, label: 'Contact', href: '#contact' }, // Placeholder, maybe link to footnote or email
+        { icon: Home, label: 'Home', href: '#home' },
+        { icon: Layers, label: 'Services', href: '#services' },
+        { icon: Briefcase, label: 'Work', href: '#portfolio' },
+        { icon: User, label: 'Process', href: '#process' },
+        { icon: Calculator, label: 'Estimator', href: '#estimator' },
+        { icon: MessageSquare, label: 'Contact', href: '#collaborate' },
     ];
 
     return (
@@ -18,7 +20,7 @@ export default function Sidebar() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="fixed z-50 left-1/2 -translate-x-1/2 bottom-6 md:left-6 md:top-1/2 md:-translate-y-1/2 md:bottom-auto md:translate-x-0"
         >
-            <nav className="glass-panel rounded-full px-6 py-3 md:py-8 md:px-4 flex flex-row md:flex-col items-center gap-6 md:gap-8 shadow-2xl">
+            <nav className="glass-panel rounded-full px-6 py-3 md:py-6 md:px-4 flex flex-row md:flex-col items-center gap-6 md:gap-5 shadow-2xl">
                 {navItems.map((item, index) => (
                     <motion.a
                         key={index}

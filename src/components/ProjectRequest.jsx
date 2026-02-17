@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { sendProjectRequest } from '../services/emailService';
 import ContactModal from './ContactModal';
 
-export default function ProjectRequest() {
+export default function ProjectRequest({ estimatorData }) {
     const [inputValue, setInputValue] = useState('');
     const [tags, setTags] = useState([]);
     const [status, setStatus] = useState('idle'); // idle, sending, success, error
@@ -31,7 +31,7 @@ export default function ProjectRequest() {
         setStatus('sending');
 
         try {
-            await sendProjectRequest(tags, contactData);
+            await sendProjectRequest(tags, contactData, estimatorData);
 
             setStatus('success');
             setTags([]);
@@ -56,9 +56,9 @@ export default function ProjectRequest() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-4xl font-bold text-white mb-2">Start a Project</h2>
+                    <h2 className="text-4xl font-bold text-white mb-2">Send Your Requirements</h2>
                     <p className="text-slate-400 mb-8">
-                        Tell me what you need. Type your requirement and press <span className="text-white font-semibold">Enter</span> to add it.
+                        Tell us what you need. Type your requirement and press <span className="text-white font-semibold">Enter</span> to add it.
                     </p>
                 </motion.div>
 
@@ -67,7 +67,7 @@ export default function ProjectRequest() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="glass-panel p-8 rounded-3xl border border-white/10 relative overflow-hidden"
+                    className="glass-panel p-8 rounded-3xl border border-white/10 relative"
                 >
                     {/* Background decoration */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -77,6 +77,24 @@ export default function ProjectRequest() {
                             <label htmlFor="requirements" className="block text-sm font-medium text-slate-300 mb-2">
                                 Project Specifications
                             </label>
+
+                            {/* Quick Add Chips */}
+                            <div className="flex flex-wrap gap-2 mb-3">
+                                {['Website', 'Mobile App', 'Custom Tool', 'UI/UX Design'].map((type) => (
+                                    <button
+                                        key={type}
+                                        onClick={() => !tags.includes(type) && setTags([...tags, type])}
+                                        disabled={tags.includes(type)}
+                                        className={`text-xs px-3 py-1.5 rounded-full border transition-all ${tags.includes(type)
+                                            ? 'bg-indigo-500/20 border-indigo-500/30 text-indigo-300 cursor-default'
+                                            : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:text-white cursor-pointer'
+                                            }`}
+                                    >
+                                        + {type}
+                                    </button>
+                                ))}
+                            </div>
+
                             <div className="relative">
                                 <input
                                     type="text"
@@ -85,7 +103,7 @@ export default function ProjectRequest() {
                                     onChange={(e) => setInputValue(e.target.value)}
                                     onKeyDown={handleKeyDown}
                                     disabled={status === 'sending'}
-                                    placeholder="Example: 'I want a login screen for my staff' or 'I need a gallery to upload my photos'"
+                                    placeholder="Type other requirements and press Enter..."
                                     className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 />
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
@@ -149,7 +167,7 @@ export default function ProjectRequest() {
                                 disabled={tags.length === 0 || status === 'sending'}
                                 className="flex items-center gap-2 bg-white text-slate-900 px-8 py-3 rounded-full font-semibold hover:bg-indigo-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
                             >
-                                <span>Send Request</span>
+                                <span>Submit Requirements</span>
                                 <Send size={18} />
                             </button>
                         </div>

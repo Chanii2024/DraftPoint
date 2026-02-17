@@ -34,7 +34,7 @@ const TimelineStep = ({ step, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-            className={`flex items-center justify-between w-full mb-12 relative z-10 ${isEven ? 'flex-row-reverse' : 'flex-row'
+            className={`flex items-center justify-between w-full mb-12 relative z-10 flex-row ${isEven ? 'md:flex-row-reverse' : ''}
                 }`}
         >
             {/* Empty space for the other side */}
@@ -48,7 +48,7 @@ const TimelineStep = ({ step, index }) => {
             {/* Content Card */}
             <div className={`w-[calc(100%-3rem)] md:w-5/12 pl-12 md:pl-0 ${isEven ? 'md:text-left' : 'md:text-right'}`}>
                 <div className="glass-panel p-6 rounded-2xl border border-white/5 hover:bg-white/5 transition-colors duration-300">
-                    <div className={`flex items-center gap-4 mb-3 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                    <div className={`flex items-center gap-4 mb-3 flex-row ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                         <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
                             <step.icon size={24} />
                         </div>
@@ -77,7 +77,7 @@ export default function ProcessTimeline() {
     });
 
     return (
-        <section ref={containerRef} className="py-20 relative overflow-hidden">
+        <section id="process" ref={containerRef} className="py-20 relative">
             <div className="max-w-6xl mx-auto px-6 relative">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
