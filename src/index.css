@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  --color-brand-dark: #0f172a; /* Slate 900 */
+  --color-brand-deep: #1e1b4b; /* Indigo 950 */
+}
+
+/* Custom utilities */
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+}
+
+/* Base styles */
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-[#1e1b4b] to-slate-950 min-h-screen text-slate-300 antialiased font-sans selection:bg-indigo-500/30 overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white font-medium tracking-tight;
+  }
+}
