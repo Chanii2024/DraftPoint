@@ -1,50 +1,73 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
 # DraftPoint ✦
 
-![DraftPoint Preview](https://via.placeholder.com/1200x600?text=DraftPoint+Preview+Image) 
-**DraftPoint** is a next-generation portfolio and freelance service platform designed for high-end developers. It moves away from generic designs, utilizing a deep atmospheric dark mode, physics-based motion, and a unique "Tag-Based" requirement gathering system for clients.
+> **Professional Portfolio Platform** designed for high-end developers.
+> Built with React, Tailwind CSS v4, and Framer Motion.
 
-## 🚀 Live Demo
-[Insert Live Link Here]
+![DraftPoint Preview](https://via.placeholder.com/1200x600?text=DraftPoint+Preview+Image)
+
+## 📖 Overview
+
+**DraftPoint** is a next-generation portfolio platform that moves away from generic designs. It utilizes a **Deep Atmospheric Dark Mode**, physics-based motion, and a unique "Tag-Based" requirement gathering system for clients.
 
 ## ✨ Key Features
 
 - **💎 Deep Glassmorphism UI:** A premium "Slate/Midnight" aesthetic with extensive use of backdrop blurs and subtle gradients.
-- **mj Floating Sidebar:** A unique, pill-shaped navigation bar that floats independently of the screen edges.
+- **mj Floating Sidebar:** A unique, pill-shaped navigation bar that floats independently of the screen edges (transforms to a bottom bar on mobile).
 - **📝 Interactive Requirement Collector:** Clients type requirements ("Login page", "Payment Gateway") and they instantly convert into visual **Tags/Chips**.
-- **💰 Smart Cost Estimator:** A toggle-based system that gives clients a rough price range before they contact you.
-- **⚡ Live Availability Status:** A pulsing indicator showing if I am currently open for new projects.
-- **📧 Serverless Contact Form:** Integrated with **EmailJS** to send professional project requests directly to email without a backend.
+- **Message Sending:** Integrated with **EmailJS** to send professional project requests directly to your email without a backend.
+- **✨ Physics-Based Motion:** Smooth, staggered animations and hover effects powered by **Framer Motion**.
 
 ## 🛠️ Tech Stack
 
-- **Framework:** React (Vite)
-- **Styling:** Tailwind CSS
+- **Framework:** React 19 (Vite)
+- **Styling:** Tailwind CSS v4
 - **Animation:** Framer Motion
 - **Icons:** Lucide React
 - **Email Service:** EmailJS
-- **Deployment:** Vercel
 
 ## 📦 Installation & Setup
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/Chanii2024/DraftPoint.git](https://github.com/Chanii2024/DraftPoint.git)
+   git clone https://github.com/Chanii2024/DraftPoint.git
    cd DraftPoint
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**
+   Create a `.env` file in the root directory (use `.env.example` as a reference):
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## 📧 EmailJS Configuration
+
+To make the "Project Request" form work:
+1. Sign up at [EmailJS](https://www.emailjs.com/).
+2. Create a generic Email Service (e.g., Gmail).
+3. Create an Email Template with a `{{message}}` variable to receive the tag list.
+4. Get your `Service ID`, `Template ID`, and `Public Key` and add them to your `.env` file.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
