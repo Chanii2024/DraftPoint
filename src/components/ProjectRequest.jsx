@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Send, X, Plus, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import { sendProjectRequest } from '../services/emailService';
+import ContactModal from './ContactModal';
 
 export default function ProjectRequest() {
     const [inputValue, setInputValue] = useState('');
     const [tags, setTags] = useState([]);
     const [status, setStatus] = useState('idle'); // idle, sending, success, error
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && inputValue.trim()) {
@@ -20,33 +22,20 @@ export default function ProjectRequest() {
         setTags(tags.filter((_, index) => index !== indexToRemove));
     };
 
-    const handleSendrequest = async () => {
+    const handleInitialSendClick = () => {
         if (tags.length === 0) return;
+        setIsModalOpen(true);
+    };
 
+    const handleFinalSubmit = async (contactData) => {
         setStatus('sending');
 
         try {
-            const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-            const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-            const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-            if (!serviceId || !templateId || !publicKey) {
-                throw new Error('EmailJS configuration missing. Please check your .env file.');
-            }
-
-            // Format the tags into a checklist string
-            const formattedMessage = tags.map(tag => `- ${tag}`).join('\n');
-
-            const templateParams = {
-                message: formattedMessage,
-                to_name: 'Developer', // Or customize based on requirement
-                reply_to: 'client@example.com' // Ideally collect this from user input
-            };
-
-            await emailjs.send(serviceId, templateId, templateParams, publicKey);
+            await sendProjectRequest(tags, contactData);
 
             setStatus('success');
             setTags([]);
+            setIsModalOpen(false);
 
             // Reset status after 5 seconds
             setTimeout(() => setStatus('idle'), 5000);
@@ -54,6 +43,7 @@ export default function ProjectRequest() {
         } catch (error) {
             console.error('EmailJS Error:', error);
             setStatus('error');
+            setIsModalOpen(false); // Close modal on error to show error message on main screen
         }
     };
 
@@ -139,7 +129,7 @@ export default function ProjectRequest() {
                                         className="flex items-center gap-2 text-green-400"
                                     >
                                         <CheckCircle size={18} />
-                                        <span>Request Sent Successfully!</span>
+                                        <span>Request Sent Successfully! check your email</span>
                                     </motion.div>
                                 )}
                                 {status === 'error' && (
@@ -149,31 +139,31 @@ export default function ProjectRequest() {
                                         className="flex items-center gap-2 text-red-400"
                                     >
                                         <AlertCircle size={18} />
-                                        <span>Failed to send. Please file an issue or try again.</span>
+                                        <span>Failed to send. Please check your config.</span>
                                     </motion.div>
                                 )}
                             </div>
 
                             <button
-                                onClick={handleSendrequest}
+                                onClick={handleInitialSendClick}
                                 disabled={tags.length === 0 || status === 'sending'}
                                 className="flex items-center gap-2 bg-white text-slate-900 px-8 py-3 rounded-full font-semibold hover:bg-indigo-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
                             >
-                                {status === 'sending' ? (
-                                    <>
-                                        <span>Sending...</span>
-                                        <Loader2 size={18} className="animate-spin" />
-                                    </>
-                                ) : (
-                                    <>
-                                        <span>Send Request</span>
-                                        <Send size={18} />
-                                    </>
-                                )}
+                                <span>Send Request</span>
+                                <Send size={18} />
                             </button>
                         </div>
                     </div>
                 </motion.div>
+
+                {/* Contact Modal */}
+                <ContactModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    onConfirm={handleFinalSubmit}
+                    isSending={status === 'sending'}
+                />
+
             </div>
         </section>
     );
