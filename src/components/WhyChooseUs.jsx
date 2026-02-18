@@ -20,7 +20,7 @@ export default function WhyChooseUs() {
                         Why Choose DraftPoint
                     </span>
 
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
                         We Answer Simply.
                     </h2>
 

@@ -48,16 +48,16 @@ export default function ProjectRequest({ estimatorData }) {
     };
 
     return (
-        <section id="collaborate" className="py-20 min-h-[50vh] flex flex-col justify-center">
-            <div className="max-w-4xl mx-auto w-full">
+        <section id="collaborate" className="pt-20 pb-32 md:pb-20 min-h-[50vh] flex flex-col justify-center">
+            <div className="max-w-4xl mx-auto w-full px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-4xl font-bold text-white mb-2">Send Your Requirements</h2>
-                    <p className="text-slate-400 mb-8">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">Send Your Requirements</h2>
+                    <p className="text-slate-400 mb-8 text-sm md:text-base">
                         Tell us what you need. Type your requirement and press <span className="text-white font-semibold">Enter</span> to add it.
                     </p>
                 </motion.div>
@@ -67,7 +67,7 @@ export default function ProjectRequest({ estimatorData }) {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="glass-panel p-8 rounded-3xl border border-white/10 relative"
+                    className="glass-panel p-5 sm:p-8 rounded-3xl border border-white/10 relative"
                 >
                     {/* Background decoration */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -85,7 +85,7 @@ export default function ProjectRequest({ estimatorData }) {
                                         key={type}
                                         onClick={() => !tags.includes(type) && setTags([...tags, type])}
                                         disabled={tags.includes(type)}
-                                        className={`text-xs px-3 py-1.5 rounded-full border transition-all ${tags.includes(type)
+                                        className={`text-[10px] sm:text-xs px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border transition-all ${tags.includes(type)
                                             ? 'bg-indigo-500/20 border-indigo-500/30 text-indigo-300 cursor-default'
                                             : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:text-white cursor-pointer'
                                             }`}
@@ -103,17 +103,17 @@ export default function ProjectRequest({ estimatorData }) {
                                     onChange={(e) => setInputValue(e.target.value)}
                                     onKeyDown={handleKeyDown}
                                     disabled={status === 'sending'}
-                                    placeholder="Type other requirements and press Enter..."
-                                    className="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    placeholder="Type other requirements..."
+                                    className="w-full bg-white/[0.02] border border-white/5 rounded-xl px-4 py-3.5 sm:py-4 text-sm sm:text-base text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-white/20 focus:border-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 />
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
-                                    <Plus size={20} />
+                                    <Plus size={18} />
                                 </div>
                             </div>
                         </div>
 
                         {/* Tags Display */}
-                        <div className="flex flex-wrap gap-3 min-h-[40px]">
+                        <div className="flex flex-wrap gap-2 sm:gap-3 min-h-[40px]">
                             {tags.length === 0 && (
                                 <span className="text-slate-600 text-sm italic py-2">Added requirements will appear here...</span>
                             )}
@@ -123,23 +123,23 @@ export default function ProjectRequest({ estimatorData }) {
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     layout
-                                    className="flex items-center gap-2 bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 px-4 py-2 rounded-lg group"
+                                    className="flex items-center gap-1.5 sm:gap-2 bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg group"
                                 >
-                                    <span>{tag}</span>
+                                    <span className="text-xs sm:text-sm">{tag}</span>
                                     <button
                                         onClick={() => removeTag(index)}
                                         disabled={status === 'sending'}
                                         className="text-indigo-300 hover:text-white transition-colors disabled:opacity-50"
                                     >
-                                        <X size={16} />
+                                        <X size={14} className="sm:w-4 sm:h-4" />
                                     </button>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <div className="pt-4 flex items-center justify-between">
+                        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-6">
                             {/* Status Messages */}
-                            <div className="flex-1">
+                            <div className="flex-1 w-full sm:w-auto">
                                 {status === 'success' && (
                                     <motion.div
                                         initial={{ opacity: 0, x: -10 }}
@@ -147,7 +147,7 @@ export default function ProjectRequest({ estimatorData }) {
                                         className="flex items-center gap-2 text-green-400"
                                     >
                                         <CheckCircle size={18} />
-                                        <span>Request Sent Successfully! check your email</span>
+                                        <span className="text-sm">Request Sent Successfully! Check your email</span>
                                     </motion.div>
                                 )}
                                 {status === 'error' && (
@@ -157,7 +157,7 @@ export default function ProjectRequest({ estimatorData }) {
                                         className="flex items-center gap-2 text-red-400"
                                     >
                                         <AlertCircle size={18} />
-                                        <span>Failed to send. Please check your config.</span>
+                                        <span className="text-sm">Failed to send. Please check your config.</span>
                                     </motion.div>
                                 )}
                             </div>
@@ -165,7 +165,7 @@ export default function ProjectRequest({ estimatorData }) {
                             <button
                                 onClick={handleInitialSendClick}
                                 disabled={tags.length === 0 || status === 'sending'}
-                                className="flex items-center gap-2 bg-white text-slate-900 px-8 py-3 rounded-full font-semibold hover:bg-indigo-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
+                                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-indigo-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95 shadow-xl shadow-white/10"
                             >
                                 <span>Submit Requirements</span>
                                 <Send size={18} />

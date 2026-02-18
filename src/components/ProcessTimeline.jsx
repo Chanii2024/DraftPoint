@@ -67,12 +67,12 @@ export default function ProcessTimeline() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start end", "end start"]
+        offset: ["start 80%", "end 20%"]
     });
 
     const scaleY = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
+        stiffness: 200,
+        damping: 40,
         restDelta: 0.001
     });
 

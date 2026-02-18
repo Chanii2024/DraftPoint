@@ -13,7 +13,7 @@ function App() {
 
   return (
     <Layout>
-      <div className="space-y-12 pb-20">
+      <div className="space-y-12 pb-32 md:pb-20">
         <Hero />
         <Deliverables />
         <ProcessTimeline />

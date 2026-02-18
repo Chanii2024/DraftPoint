@@ -88,7 +88,7 @@ export default function Deliverables() {
                 </div>
 
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
                     <ServiceCard
                         icon={Globe}
                         title="Websites & Platforms"
@@ -110,7 +110,7 @@ export default function Deliverables() {
                 </div>
 
                 {/* Tech Stack Consultant */}
-                <div className="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 bg-slate-900/50">
+                <div className="glass-panel p-8 md:p-12 rounded-3xl border border-white/5 bg-white/[0.02]">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
                             <div className="flex items-center gap-3 mb-4">

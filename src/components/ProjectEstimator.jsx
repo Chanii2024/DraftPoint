@@ -126,12 +126,12 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 relative"
+                    className="glass-panel p-6 sm:p-8 md:p-12 rounded-3xl border border-white/10 relative overflow-hidden"
                 >
                     {/* Background Glow */}
                     <div className="absolute top-0 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 relative z-10">
                         {/* Left Side: Dynamic Views (3/5 space) */}
                         <div className="lg:col-span-3">
                             <AnimatePresence mode="wait">
@@ -148,9 +148,9 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                                 <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
                                                     <Calculator size={24} />
                                                 </div>
-                                                <h2 className="text-3xl font-bold text-white">Project Estimator</h2>
+                                                <h2 className="text-2xl md:text-3xl font-bold text-white">Project Estimator</h2>
                                             </div>
-                                            <p className="text-slate-400 mb-8 max-w-xl leading-relaxed">
+                                            <p className="text-slate-400 mb-8 max-w-xl leading-relaxed text-sm md:text-base">
                                                 Select the features you need. Click on any feature to customize its package level and see technical details.
                                             </p>
                                         </div>
@@ -169,7 +169,7 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                                     >
                                                         <div className="flex justify-between items-start">
                                                             <div className="flex flex-col">
-                                                                <span className="font-bold text-lg text-white group-hover:text-indigo-200 transition-colors uppercase tracking-tight">{data.title}</span>
+                                                                <span className="font-bold text-base md:text-lg text-white group-hover:text-indigo-200 transition-colors uppercase tracking-tight">{data.title}</span>
                                                                 <span className={`text-[10px] font-bold uppercase tracking-widest ${isSelected ? 'text-indigo-400' : 'text-slate-500'}`}>
                                                                     {isSelected ? `${levelData.name} (+$${levelData.price})` : `Starting from $${data.levels[0].price}`}
                                                                 </span>
@@ -207,7 +207,7 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: 20 }}
-                                            className="space-y-8"
+                                            className="space-y-6 md:space-y-8"
                                         >
                                             <button
                                                 onClick={() => {
@@ -217,11 +217,11 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                                 className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group mb-2"
                                             >
                                                 <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                                                <span className="text-xs font-bold uppercase tracking-[0.2em]">Back to Full List</span>
+                                                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Back to Full List</span>
                                             </button>
 
                                             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                                                <h2 className="text-4xl font-bold text-white tracking-tighter">{data.title}</h2>
+                                                <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter">{data.title}</h2>
                                                 {currentLevelId !== 'none' && (
                                                     <div className="px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full self-start sm:self-auto">
                                                         <span className="text-sm font-bold text-indigo-300">Active: {data.levels.find(l => l.id === currentLevelId)?.name}</span>
@@ -229,12 +229,12 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                                 )}
                                             </div>
 
-                                            <div className="flex flex-wrap gap-2 p-1.5 bg-slate-900/50 rounded-2xl border border-white/5">
+                                            <div className="flex flex-nowrap gap-2 p-1.5 bg-slate-900/50 rounded-2xl border border-white/5 overflow-x-auto no-scrollbar">
                                                 {data.levels.map(level => (
                                                     <button
                                                         key={level.id}
                                                         onClick={() => setPreviewLevel(level.id)}
-                                                        className={`flex-1 min-w-[120px] py-4 px-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] transition-all ${currentPreviewId === level.id ? 'bg-indigo-600 text-white shadow-2xl scale-[1.02] ring-2 ring-white/10' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'}`}
+                                                        className={`flex-1 min-w-[80px] md:min-w-[120px] py-3 md:py-4 px-2 md:px-4 rounded-xl text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] transition-all whitespace-nowrap ${currentPreviewId === level.id ? 'bg-indigo-600 text-white shadow-2xl scale-[1.02] ring-2 ring-white/10' : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'}`}
                                                     >
                                                         {level.name}
                                                     </button>
@@ -245,16 +245,16 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                                                 key={currentPreviewData.id}
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                                                className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
                                             >
                                                 <div className="space-y-6">
                                                     <div className="flex flex-col h-full justify-between">
                                                         <div>
                                                             <span className="text-[11px] text-indigo-400 font-bold uppercase tracking-[0.2em] mb-2">{currentPreviewData.category}</span>
-                                                            <p className="text-lg text-slate-300 leading-relaxed font-medium mb-4">
+                                                            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium mb-4">
                                                                 {currentPreviewData.description}
                                                             </p>
-                                                            <div className="text-3xl font-bold text-white mb-8">
+                                                            <div className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">
                                                                 +${currentPreviewData.price}
                                                             </div>
                                                         </div>
@@ -297,8 +297,8 @@ export default function ProjectEstimator({ onEstimatorUpdate }) {
                         </div>
 
                         {/* Right: Output (2/5 space) */}
-                        <div className="lg:col-span-2 flex flex-col justify-start pt-12">
-                            <div className="bg-slate-900/80 backdrop-blur-md p-10 rounded-3xl border border-white/10 text-center relative overflow-hidden group shadow-2xl sticky top-8">
+                        <div className="lg:col-span-2 flex flex-col justify-start pt-4 lg:pt-12">
+                            <div className="bg-white/[0.03] backdrop-blur-3xl p-8 md:p-10 rounded-3xl border border-white/10 text-center relative overflow-hidden group shadow-2xl lg:sticky lg:top-8">
                                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
 
                                 <span className="text-slate-400 text-xs font-bold uppercase tracking-[0.3em] mb-6 block">Estimated Investment</span>
