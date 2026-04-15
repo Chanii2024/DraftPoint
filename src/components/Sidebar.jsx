@@ -28,14 +28,14 @@ export default function Sidebar() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         className={clsx(
-                            "p-3 rounded-full transition-colors duration-300 group relative text-slate-400 hover:text-white hover:bg-white/5"
+                            "p-3 rounded-full transition-all duration-300 group relative text-secondary hover:text-accent hover:bg-[var(--hover-bg)]"
                         )}
                         aria-label={item.label}
                     >
-                        <item.icon size={24} strokeWidth={1.5} />
+                        <item.icon size={22} strokeWidth={1.5} />
 
                         {/* Tooltip - Desktop Only */}
-                        <span className="hidden md:block absolute left-full ml-6 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-950/80 backdrop-blur-xl text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap border border-white/5 shadow-2xl translate-x-[-10px] group-hover:translate-x-0">
+                        <span className="hidden md:block absolute left-full ml-6 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[var(--tooltip-bg)] text-[var(--tooltip-text)] text-xs font-bold rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap border border-[var(--glass-border)] shadow-2xl translate-x-[-10px] group-hover:translate-x-0 tracking-wide">
                             {item.label}
                         </span>
                     </motion.a>

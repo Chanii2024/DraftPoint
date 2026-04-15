@@ -10,9 +10,9 @@ const SocialLink = ({ href, icon: Icon, label, customIcon, delay }) => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay, duration: 0.5 }}
-        whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+        whileHover={{ scale: 1.1, backgroundColor: "var(--hover-bg)", borderColor: "var(--text-accent)" }}
         whileTap={{ scale: 0.95 }}
-        className="p-3 bg-white/5 border border-white/10 rounded-full transition-colors duration-300 text-slate-300 hover:text-white group"
+        className="p-3 bg-[var(--glass-bg-start)] border border-[var(--glass-border)] rounded-full transition-all duration-300 text-secondary hover:text-accent group shadow-sm"
         aria-label={label}
     >
         {customIcon ? customIcon : <Icon size={20} />}
@@ -24,13 +24,13 @@ const AvailabilityBadge = () => (
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md w-fit mb-6"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--glass-bg-start)] border border-[var(--glass-border)] backdrop-blur-md w-fit mb-6 shadow-sm"
     >
         <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
         </span>
-        <span className="text-xs font-medium text-slate-300 tracking-wide">Available for Work</span>
+        <span className="text-[10px] uppercase font-bold text-secondary tracking-[0.2em]">Available for Work</span>
     </motion.div>
 );
 
@@ -52,7 +52,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="text-slate-400 text-lg font-medium tracking-wide uppercase ml-1"
+                    className="text-secondary text-lg font-medium tracking-wide uppercase ml-1"
                 >
                     The Developer Portfolio of
                 </motion.h2>
@@ -60,7 +60,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                    className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500"
+                    className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-primary"
                 >
                     DraftPoint
                 </motion.h1>
@@ -71,7 +71,7 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="mt-8 text-xl text-slate-400 max-w-2xl leading-relaxed"
+                    className="mt-8 text-xl text-secondary max-w-2xl leading-relaxed"
                 >
                     Building digital experiences with precision and style.
                     Specializing in modern web technologies and creating intuitive,

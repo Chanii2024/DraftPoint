@@ -41,20 +41,20 @@ const TimelineStep = ({ step, index }) => {
             <div className="w-5/12 hidden md:block" />
 
             {/* Center Node */}
-            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-indigo-500/50 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(99,102,241,0.5)]">
-                <div className="w-3 h-3 bg-indigo-400 rounded-full" />
+            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[var(--bg-primary)] border-2 border-accent/30 flex items-center justify-center z-10 shadow-[0_0_15px_var(--glass-shadow)]">
+                <div className="w-3 h-3 bg-accent rounded-full" />
             </div>
 
             {/* Content Card */}
             <div className={`w-[calc(100%-3rem)] md:w-5/12 pl-12 md:pl-0 ${isEven ? 'md:text-left' : 'md:text-right'}`}>
-                <div className="glass-panel p-6 rounded-2xl border border-white/5 hover:bg-white/5 transition-colors duration-300">
+                <div className="glass-panel p-6 rounded-2xl border border-[var(--glass-border)] hover:bg-[var(--hover-bg)] transition-colors duration-300">
                     <div className={`flex items-center gap-4 mb-3 flex-row ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                        <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
+                        <div className="p-2 bg-accent/10 rounded-lg text-accent">
                             <step.icon size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                        <h3 className="text-xl font-bold text-primary">{step.title}</h3>
                     </div>
-                    <p className="text-slate-400 leading-relaxed">
+                    <p className="text-secondary leading-relaxed">
                         {step.description}
                     </p>
                 </div>
@@ -85,19 +85,19 @@ export default function ProcessTimeline() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">My Process</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-bold text-primary mb-4">My Process</h2>
+                    <p className="text-secondary max-w-2xl mx-auto">
                         From concept to completion, I follow a structured approach to deliver exceptional results.
                     </p>
                 </motion.div>
 
                 <div className="relative">
                     {/* Base Line */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/5 -translate-x-1/2" />
+                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-[var(--glass-border)] -translate-x-1/2" />
 
                     {/* Laser Line */}
                     <motion.div
-                        className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-indigo-500 -translate-x-1/2 origin-top shadow-[0_0_10px_rgba(99,102,241,0.8)]"
+                        className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-accent via-purple-500 to-accent -translate-x-1/2 origin-top shadow-[0_0_10px_var(--glass-shadow)]"
                         style={{ scaleY, height: "100%" }}
                     />
 

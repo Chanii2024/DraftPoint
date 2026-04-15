@@ -47,24 +47,24 @@ const item = {
 const ProjectCard = ({ project }) => (
     <motion.div
         variants={item}
-        whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(99, 102, 241, 0.2)" }}
-        className="glass-panel p-6 rounded-2xl group transition-colors duration-300 flex flex-col h-full"
+        whileHover={{ y: -5, boxShadow: "0 10px 30px -10px var(--glass-shadow)" }}
+        className="glass-panel p-6 rounded-2xl group transition-all duration-300 flex flex-col h-full hover:bg-[var(--hover-bg)]"
     >
         <div className="flex justify-between items-start mb-4">
-            <h3 className="text-xl font-semibold text-white group-hover:text-indigo-300 transition-colors">
+            <h3 className="text-xl font-semibold text-primary group-hover:text-accent transition-colors">
                 {project.title}
             </h3>
             <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
-                <a href={project.links.github} className="text-slate-400 hover:text-white transition-colors" title="View Code">
+                <a href={project.links.github} className="text-secondary hover:text-primary transition-colors" title="View Code">
                     <Github size={18} />
                 </a>
-                <a href={project.links.demo} className="text-slate-400 hover:text-white transition-colors" title="Live Demo">
+                <a href={project.links.demo} className="text-secondary hover:text-primary transition-colors" title="Live Demo">
                     <ExternalLink size={18} />
                 </a>
             </div>
         </div>
 
-        <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+        <p className="text-secondary text-sm leading-relaxed mb-6 flex-grow">
             {project.description}
         </p>
 
@@ -72,7 +72,7 @@ const ProjectCard = ({ project }) => (
             {project.tags.map((tag, index) => (
                 <span
                     key={index}
-                    className="px-2.5 py-1 text-xs font-medium text-slate-300 bg-white/5 rounded-full border border-white/5"
+                    className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary bg-[var(--bg-surface)] rounded-full border border-[var(--glass-border)]"
                 >
                     {tag}
                 </span>
@@ -90,9 +90,9 @@ export default function PortfolioGrid() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-3xl font-bold text-white mb-10 flex items-center gap-3"
+                    className="text-3xl font-bold text-primary mb-10 flex items-center gap-3"
                 >
-                    <span className="w-8 h-1 bg-indigo-500 rounded-full"></span>
+                    <span className="w-8 h-1 bg-accent rounded-full opacity-50"></span>
                     Recent Work
                 </motion.h2>
 

@@ -8,13 +8,13 @@ const ServiceCard = ({ icon: Icon, title, description, delay }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay, duration: 0.5 }}
-        className="glass-panel p-8 rounded-3xl border border-white/5 hover:bg-white/5 transition-colors group"
+        className="glass-panel p-8 rounded-3xl border border-[var(--glass-border)] hover:bg-[var(--hover-bg)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group bg-[var(--bg-surface)]/50"
     >
-        <div className="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <Icon className="text-indigo-400" size={24} />
+        <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <Icon className="text-accent" size={24} />
         </div>
-        <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-        <p className="text-slate-400 leading-relaxed text-sm">
+        <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
+        <p className="text-secondary leading-relaxed text-sm">
             {description}
         </p>
     </motion.div>
@@ -25,9 +25,9 @@ const TechItem = ({ name, isSelected, onClick }) => (
         onClick={onClick}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${isSelected
-            ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-500/25'
-            : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+        className={`px-4 py-2 rounded-full text-sm font-bold border transition-all duration-300 ${isSelected
+            ? 'bg-accent border-accent text-white shadow-lg shadow-indigo-500/25'
+            : 'bg-[var(--bg-surface)] border-[var(--glass-border)] text-secondary hover:text-accent hover:bg-[var(--hover-bg)] hover:border-accent/30'
             }`}
     >
         {name}
@@ -71,18 +71,18 @@ export default function Deliverables() {
                     <motion.span
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="text-indigo-400 font-bold tracking-widest uppercase text-sm"
+                        className="text-accent font-bold tracking-[0.2em] uppercase text-sm"
                     >
                         Our Expertise
                     </motion.span>
                     <motion.h2
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6"
+                        className="text-4xl md:text-5xl font-bold text-primary mt-4 mb-6"
                     >
                         What We Deliver
                     </motion.h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+                    <p className="text-secondary max-w-2xl mx-auto text-lg">
                         From web platforms to mobile apps, we build scalable solutions tailored to your business needs, for both local and international clients.
                     </p>
                 </div>
@@ -110,16 +110,16 @@ export default function Deliverables() {
                 </div>
 
                 {/* Tech Stack Consultant */}
-                <div className="glass-panel p-8 md:p-12 rounded-3xl border border-white/5 bg-white/[0.02]">
+                <div className="glass-panel p-8 md:p-12 rounded-3xl border border-[var(--glass-border)] bg-[var(--bg-surface)]/80 shadow-lg">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="p-2 bg-green-500/10 rounded-lg text-green-400">
+                                <div className="p-2 bg-accent/10 rounded-lg text-accent">
                                     <MessageCircle size={24} />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">Choose Your Tech Stack</h3>
+                                <h3 className="text-2xl font-bold text-primary">Choose Your Tech Stack</h3>
                             </div>
-                            <p className="text-slate-400 mb-8 leading-relaxed">
+                            <p className="text-secondary mb-8 leading-relaxed">
                                 Not sure which technologies match your vision? Select the ones you're interested in, or simply chat with us directly for expert advice.
                             </p>
 
@@ -152,12 +152,12 @@ export default function Deliverables() {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="mt-6 p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-start gap-3"
+                                    className="mt-6 p-4 rounded-xl bg-accent/5 border border-accent/10 flex items-start gap-3"
                                 >
-                                    <CheckCircle2 className="text-indigo-400 shrink-0 mt-0.5" size={18} />
+                                    <CheckCircle2 className="text-accent shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white font-medium text-sm">Selection Included in Message</p>
-                                        <p className="text-slate-400 text-xs mt-1">
+                                        <p className="text-primary font-medium text-sm">Selection Included in Message</p>
+                                        <p className="text-secondary text-xs mt-1">
                                             When you click the WhatsApp button, your selected technologies will be automatically added to the message draft.
                                         </p>
                                     </div>

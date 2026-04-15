@@ -3,30 +3,126 @@
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  --color-brand-dark: #1a1a2e;
-  /* Rich Midnight Blue */
-  --color-brand-deep: #16213e;
-  /* Deep Navy */
-  --color-brand-accent: #7873f5;
-  /* Bright Peri-Purple */
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-accent: var(--text-accent);
+  --color-bg-primary: var(--bg-primary);
+}
+
+/* Theme Variables */
+:root {
+  /* DARK MODE (Default) - Midnight */
+  --bg-primary: #13132b;
+  --bg-gradient-1: rgba(100, 90, 200, 0.25);
+  --bg-gradient-2: rgba(60, 50, 120, 0.2);
+  --bg-gradient-3: rgba(25, 25, 45, 0.5);
+
+  --glass-bg-start: rgba(255, 255, 255, 0.15);
+  --glass-bg-end: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(31, 38, 135, 0.37);
+
+  --text-primary: #f1f5f9;
+  /* slate-100 */
+  --text-secondary: #94a3b8;
+  /* slate-400 */
+  --text-accent: #818cf8;
+  /* indigo-400 */
+  --text-accent-soft: rgba(129, 140, 248, 0.2);
+
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --bg-surface: rgba(15, 23, 42, 0.5);
+  /* slate-900/50 */
+  --bg-card: rgba(30, 41, 59, 0.7);
+  /* slate-800/70 */
+
+  --tooltip-bg: rgba(2, 6, 23, 0.95);
+  --tooltip-text: #f8fafc;
+
+  --border-subtle: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] {
+  /* LIGHT MODE - Professional White */
+  --bg-primary: #fdfdff;
+  --bg-gradient-1: rgba(79, 70, 229, 0.05);
+  /* indigo-600/5 */
+  --bg-gradient-2: rgba(148, 163, 184, 0.08);
+  /* slate-400/8 */
+  --bg-gradient-3: rgba(255, 255, 255, 0.8);
+
+  --glass-bg-start: rgba(255, 255, 255, 0.9);
+  --glass-bg-end: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(226, 232, 240, 0.6);
+  --glass-shadow: rgba(148, 163, 184, 0.1);
+
+  --text-primary: #0f172a;
+  /* slate-900 */
+  --text-secondary: #475569;
+  /* slate-600 */
+  --text-accent: #4f46e5;
+  /* indigo-600 */
+  --text-accent-soft: rgba(79, 70, 229, 0.1);
+
+  --hover-bg: rgba(15, 23, 42, 0.03);
+  --bg-surface: #ffffff;
+  --bg-card: #f8fafc;
+  /* slate-50 */
+
+  --tooltip-bg: #ffffff;
+  --tooltip-text: #0f172a;
+
+  --border-subtle: rgba(15, 23, 42, 0.05);
 }
 
 /* Custom utilities */
 @layer utilities {
   .glass-panel {
-    @apply bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/10;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background-image: linear-gradient(to bottom right, var(--glass-bg-start), var(--glass-bg-end));
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  }
+
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-accent {
+    color: var(--text-accent);
+  }
+
+  .bg-primary {
+    background-color: var(--bg-primary);
+  }
+
+  .bg-surface {
+    background-color: var(--bg-surface);
+  }
+
+  .border-glass {
+    border-color: var(--glass-border);
   }
 }
 
 /* Base styles */
 @layer base {
   body {
-    @apply bg-[#13132b] min-h-screen text-slate-200 antialiased font-sans selection:bg-indigo-500/30 overflow-x-hidden;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
     background-image:
-      radial-gradient(at 0% 0%, rgba(100, 90, 200, 0.25) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(60, 50, 120, 0.2) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(25, 25, 45, 0.5) 0px, transparent 100%);
+      radial-gradient(at 0% 0%, var(--bg-gradient-1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, var(--bg-gradient-2) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, var(--bg-gradient-3) 0px, transparent 100%);
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1,
@@ -35,7 +131,17 @@
   h4,
   h5,
   h6 {
-    @apply text-white/90 font-medium tracking-tight;
+    color: var(--text-primary);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    transition: color 0.3s ease;
+  }
+
+  p,
+  span,
+  li,
+  a {
+    transition: color 0.3s ease;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
